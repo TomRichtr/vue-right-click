@@ -1,28 +1,43 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="box1" v-on:click.right="openOnRightClick">click on me by right button!</div>
+    <div class="box2" v-if="show" v-on:click.right="openOnRightClick">You clicked, right?</div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      show: false
+    }
+  },
+  methods: {
+    openOnRightClick(e) {
+      e.preventDefault();
+      this.show = !this.show
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.box1 {
+  height: 50px;
+  width: 150px;
+  background-color: greenyellow;
+  display: table-cell;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+
+.box2 {
+  height: 50px;
+  width: 150px;
+  background-color: indianred;
+  display: table-cell;
+  text-align: center;
 }
 </style>
